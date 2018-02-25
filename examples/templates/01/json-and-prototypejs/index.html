@@ -13,15 +13,15 @@
     <p><code>JSON.stringify([1, 2, undefined])</code> produces the following output:
 
     <script>
-        document.write('<pre>' + JSON.stringify([1, 2, undefined]) + '</pre>');
+      document.write('<pre>' + JSON.stringify([1, 2, undefined]) + '</pre>');
     </script>
-    
+
     <h3>After loading Protoype.js</h3>
     <script src="{{ url_for('static', filename='prototype.js') }}"></script>
 
     <p><code>JSON.stringify([1, 2, undefined])</code> produces the following output:</p>
 
     <script>
-        document.write('<pre>' + JSON.stringify([1, 2, undefined]) + '</pre>');
+      document.write('<pre>' + JSON.stringify([1, 2, undefined]) + '</pre>');
     </script>
 {% endblock %}
