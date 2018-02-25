@@ -76,7 +76,7 @@ def cors():
 #========================================
 
 def trusted_domains(domain):
-    return ['publisher.dev']
+    return ['publisher.test']
 
 
 def api_request(request, endpoint):
@@ -89,7 +89,7 @@ import json
 @app.route('/api/<endpoint>')
 def api(endpoint=None):
     domain = urlparse(request.headers['Referer']).hostname
-    if domain == 'widget.dev':
+    if domain == 'widget.test':
         domain = urlparse(request.headers['CameraStork-Publisher-Origin']).hostname
 
     api_key = request.args.get('apiKey')

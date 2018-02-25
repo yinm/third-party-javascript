@@ -11,11 +11,11 @@ app.config.update(
     FREEZER_IGNORE_MIMETYPE_WARNINGS=True
 )
 
-PUBLISHER_DOMAIN = 'publisher.dev'
+PUBLISHER_DOMAIN = 'publisher.test'
 
-PUBLISHER_URL = 'http://publisher.dev:5000'
-PUBLISHER_PROXY_URL = 'http://proxy.publisher.dev:5000'
-SERVICE_URL = 'http://widget.dev:5000'
+PUBLISHER_URL = 'http://publisher.test:5000'
+PUBLISHER_PROXY_URL = 'http://proxy.publisher.test:5000'
+SERVICE_URL = 'http://widget.test:5000'
 
 
 class RegexConverter(BaseConverter):
