@@ -1,0 +1,7 @@
+# .gitignore
+
+build
+*.pyc
+
+**/static/**
+**/shared/**
