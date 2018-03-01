@@ -9,7 +9,8 @@
     <p>Below this line of text is a standard &lt;script&gt; include that loads a slow-loading JavaScript file. Below that script include is further page content, but it will not appear until the script has finished loading (3 seconds).</p>
     
     <img src="{{ url_for('static', filename='loading.gif') }}"/>
-    
+
+    <!-- check -->
     <script src="{{ service_url }}/slow?url={{ service_url_for('example', chapter='02', name='script-blocking', file='removeSpinner.js') }}"></script>
     <p>This part of the document won't render until the script is loaded.</p>
     

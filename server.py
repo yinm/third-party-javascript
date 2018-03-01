@@ -34,12 +34,8 @@ def weather_widget():
 
 @app.route('/slow')
 def slow():
-    """
-    Wait 3 seconds before redirecting to the requested resource
-    """
     time.sleep(3)
     return flask.redirect(request.args.get('url'))
-
 
 @app.route('/echo.jsonp')
 def jsonp():
