@@ -11,74 +11,73 @@
     <p id="css-ready-sentence">When styles.css is loaded, this sentence will appear blue.</p>
 
     <script>
-
     var log = function() {
-        var script = document.getElementsByTagName('script')[0],
-            start  = (new Date).getTime();
+      var script = document.getElementsByTagName('script')[0],
+          start  = (new Date).getTime();
 
-        return function(str) {
-            var div = document.createElement('div');
-            div.innerHTML = str + ' (' + ((new Date).getTime() - start) + 'ms)';
-            script.parentNode.insertBefore(div, script);
-        }
+      return function(str) {
+        var div = document.createElement('div');
+        div.innerHTML = str + '(' + ((new Date).getTime() - start) + 'ms)';
+        script.parentNode.insertBefore(div, script);
+      }
     }();
 
     function loadScript(url, callback) {
-        var script = document.createElement('script'); 
+      var script = document.createElement('script');
 
-        script.type  = 'text/javascript';
-        script.async = true;
-        script.src   = url
+      script.type  = 'text/javascript';
+      script.async = true;
+      script.src   = url;
 
-        var entry = document.getElementsByTagName('script')[0];
-        entry.parentNode.insertBefore(script, entry);
+      var entry = document.getelementsByTagName('script')[0];
+      entry.parentNode.insertBefore(script, entry);
 
-        if (script.addEventListener)
-            script.addEventListener('load', callback, false);
-        else {
-            script.attachEvent('onreadystatechange', function() {
-                if (/complete|loaded/.test(script.readyState))
-                    callback();
-            });
-        }
+      if (script.addEventListener) {
+        script.addEventListener('load', callback, false);
+      } else {
+        script.attachEvent('onreadystatechange', function() {
+          if (/complete|loaded/.test(script.readyState)) {
+            callback();
+          }
+        });
+      }
     }
 
     function loadStylesheet(url, callback) {
-        var link = document.createElement('link');
-        
-        link.rel  = 'stylesheet';
-        link.type = 'text/css';
-        link.href = url;
-        
-        // Append <link/> tag
-        var entry = document.getElementsByTagName('script')[0];
-        entry.parentNode.insertBefore(link, entry);
+      var link = document.createElement('link');
 
-        // Append test element
-        var testElem = document.createElement('span');
-        testElem.id = 'css-ready';
+      link.rel  = 'stylesheet';
+      link.type = 'text/css';
+      link.href = url;
 
-        entry.parentNode.insertBefore(testElem, entry);
+      // Append <link/> tag
+      var entry = document.getElementsByTagName('script')[0];
+      entry.parentNode.insertBefore(link, entry);
 
-        (function() {
-            var node = document.getElementById('css-ready');
+      // Append test element
+      var testElem = document.createElement('span');
+      testElem.id = 'css-ready';
 
-            if (window.getComputedStyle) {
-                value = document.defaultView
-                    .getComputedStyle(node, null)
-                    .getPropertyValue('color');
-            }
-            else if (testElem.currentStyle) {
-                value = node.currentStyle['color'];
-            }
-        
-            if (value && value === 'rgb(121, 121, 121)' || value === '#797979') {
-                callback();
-            } else {
-                // Timeout can be whatever you choose
-                setTimeout(arguments.callee, 100);
-            }
-        })();
+      entry.parentNode.insertBefore(testElem, entry);
+
+      (function() {
+        var node = document.getElementById('css-ready');
+
+        if (window.getComputedStyle) {
+          value = document.defaultView
+            .getComputedStyle(node, null)
+            .getPropertyValue('color');
+        } else if (testElem.currentStyle) {
+          value = node.currentStyle['color'];
+        }
+
+        if (value && value === 'rgb(121, 121, 121)' || value === '#797979') {
+          callback();
+        } else {
+          // Timeout can be whatever you choose
+          setTimeout(arguments.callee, 100);
+        }
+      })();
     }
 
     log('Loading lib.js');
@@ -92,6 +91,16 @@
         loadStylesheet("{{ service_url_for('example', chapter='02', name='loading-files', file='styles.css') }}", function() {
             log('&hellip; Callback fired');
         });
+    });
+
+    log('Loading lib.js');
+    loadScript("{{ service_url_for('example', chapter='02', name='loading-files', file='lib.js') }}", function() {
+      log('&hellip; Callback fired');
+
+      log('Loading styles.css');
+      loadStylesheet("{{ service_url_for('example', chapter='02', name='loading-files', file='styles.css') }}", function() {
+        log('&hellip; Callback fired');
+      });
     });
     </script>
 
