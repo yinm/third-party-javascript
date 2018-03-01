@@ -20,6 +20,7 @@
     <p>Now we load the same slow-loading file <em>asynchronously</em> by dynamically creating a &lt;script&gt; element and appending it to the DOM.
     
     <p><img src="{{ url_for('static', filename='loading.gif') }}"/></p>
+    <!-- check -->
     <script>
     (function() {
         var script = document.createElement('script');
@@ -34,8 +35,8 @@
 
         var entry = document.getElementsByTagName('script')[0];
         entry.parentNode.insertBefore(script, entry);
-    }());
+    })();
     </script>
-    
+
     <p>This content appears even while the script is loading.<p>
 {% endblock %}
