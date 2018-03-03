@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+  <div>
+    <span id="childSpan">foo bar</span>
+  </div>
+
+  <script>
+    var sp1 = document.createElement('span');
+    sp1.setAttribute('id', 'newSpan');
+
+    var sp1_content = document.createTextNode('This is a new span element.');
+    sp1.appendChild(sp1_content);
+
+    var sp2 = document.getElementById('childSpan');
+    var parentDiv = sp2.parentNode;
+
+    parentDiv.insertBefore(sp1, sp2);
+  </script>
+</body>
+</html>
