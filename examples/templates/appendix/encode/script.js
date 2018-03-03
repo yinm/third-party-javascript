@@ -1,17 +1,10 @@
-var value;
+document.addEventListener('DOMContentLoaded', function(e) {
+  var attr1 = 'hoge';
+  var content = 'aiueo';
 
-value = "あいうえお";
-console.log("http://example.com/" + encodeURI(value) + "/hoge");
-console.log("http://example.com/" + encodeURIComponent(value) + "/hoge");
-
-value = encodeURIComponent("あいうえお");
-console.log(decodeURI(value));
-console.log(decodeURIComponent(value));
-
-value = 'http://';
-console.log("http://exmaple.com/" + encodeURI(value) + "/hoge");
-console.log('http://example.com/' + encodeURIComponent(value) + "/hoge");
-
-value = encodeURIComponent("http://");
-console.log(decodeURI(value));
-console.log(decodeURIComponent(value));
+  var body = document.getElementsByTagName('body')[0];
+  var div = document.createElement('div');
+  div.setAttribute('attr1', attr1);
+  div.textContent = content;
+  body.appendChild(div);
+}, false);
