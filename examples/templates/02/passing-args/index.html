@@ -91,20 +91,20 @@
 
 
     <script>
-    var Stork = window.Stork || {};
+      var Stork = window.Stork || {};
 
-    (function() {
+      (function() {
         Stork.productId = Stork.productId || [];
         Stork.productId.push(1337);
 
-        var script = document.createElement('script'); 
+        var script = document.createElement('script');
 
-        script.type  = 'text/javascript';
+        script.type = 'text/javascript';
         script.async = true;
-        script.src   = "{{ service_url_for('example', chapter='02', name='passing-args', file='globals.js') }}";
+        script.src = "{{ service_url_for('example', chapter='02', name='passing-args', file='global.js') }}";
 
         var entry = document.getElementsByTagName('script')[0];
         entry.parentNode.insertBefore(script, entry);
-    }());
+      })();
     </script>
 {% endblock %}
