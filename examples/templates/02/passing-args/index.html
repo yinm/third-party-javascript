@@ -69,15 +69,15 @@
 
     <script data-stork-productId="1337">
     (function() {
-        var script = document.createElement('script'); 
+      var script = document.createElement('script');
 
-        script.type  = 'text/javascript';
-        script.async = true;
-        script.src   = "{{ service_url_for('example', chapter='02', name='passing-args', file='data-attr.js') }}";
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "{{ service_url_for('example', chapter='02', name='passing-args', file='data-attr.js') }}";
 
-        var entry = document.getElementsByTagName('script')[0];
-        entry.parentNode.insertBefore(script, entry);
-    }());
+      var entry = document.getElementsByTagName('script')[0];
+      entry.parentNode.insertBefore(script, entry);
+    })();
     </script>
 
     <h3>Global variable arrays</h3>
