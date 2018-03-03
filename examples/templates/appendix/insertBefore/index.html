@@ -3,20 +3,16 @@
 <head>
 </head>
 <body>
-  <div>
+  <div id="parentElement">
     <span id="childSpan">foo bar</span>
+    <span id="childSpan2">foo bar</span>
   </div>
 
   <script>
-    var span1 = document.createElement('span');
-    span1.setAttribute('id', 'newSpan');
-
-    var span1Content = document.createTextNode('This is a new span element.');
-    span1.appendChild(span1Content);
-
-    var span2 = document.getElementById('childSpan');
-    var parentDiv = span2.parentNode;
-    parentDiv.insertBefore(span1, span2.nextSibling);
+    var parentElement = document.getElementById('parentElement');
+    var theFirstChild = parentElement.firstChild;
+    var newElement = document.createElement('div');
+    parentElement.insertBefore(newElement, theFirstChild);
   </script>
 </body>
 </html>
