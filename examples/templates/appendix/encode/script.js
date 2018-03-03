@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', function(e) {
-  var attr1 = 'hoge';
-  var content = 'aiueo';
+  function escapeHTML(html) {
+    var elem = document.createElement('div');
+    elem.appendChild(document.createTextNode(html));
+    return elem.innerHTML;
+  }
 
-  body = document.getElementsByTagName('body')[0];
-  body.innerHTML = '<div attr1="' + attr1 + '">' + content + '</div>';
+  console.log(escapeHTML('<a>'));
 }, false);
