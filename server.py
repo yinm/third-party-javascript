@@ -39,11 +39,7 @@ def slow():
 
 @app.route('/echo.jsonp')
 def jsonp():
-    """
-    Returns the passed query string args via JSONP.
-    """
     return "%s(%s)" % (request.args.get('callback'), json.dumps(request.args))
-
 
 @app.route('/cors')
 def cors():
