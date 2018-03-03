@@ -28,13 +28,13 @@
     <h3>External iframe</h3>
 
     <script id="external">
-        var iframe = document.createElement('iframe');
-        iframe.style.width = '250px';
-        iframe.style.height = '300px';
-        iframe.style.border = 'none';
-        iframe.src = "{{ service_url_for('example', chapter='03', name='rendering-iframes', file='iframe.html') }}";
+      var iframe = document.createElement('iframe');
+      iframe.style.width = '250px';
+      iframe.style.height = '300px';
+      iframe.style.border = 'none';
+      iframe.src = "{{ service_url_for('example', chapter='03', name='rendering-iframes', file='iframe.html') }}";
 
-        var insert = document.getElementById('external');
-        insert.parentNode.insertBefore(iframe, insert);
+      var insert = document.getElementById('external');
+      insert.parentNode.insertBefore(iframe, insert);
     </script>
 {% endblock %}
