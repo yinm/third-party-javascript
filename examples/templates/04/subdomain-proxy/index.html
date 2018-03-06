@@ -19,34 +19,35 @@
     <pre><code id="output"></code></pre>
 
     <script>
-        function getProductData(id) {
-            var iframe = document.createElement('iframe');
-            iframe.src = "{{ publisher_proxy_url_for('example', chapter='04', name='subdomain-proxy', file='proxy.html') }}";
-         
-            function onready() {
-                iframe.contentWindow.jQuery.ajax({
-                    method: 'GET',
-                    url: 'products.json',
-                    data: { product: id },
-                    success: function(resp) {
-                        document.getElementById('output').innerHTML = resp;
-                    }
-                });
-            }
+      function getProductData(id) {
+        var iframe = document.createElement('iframe');
+        iframe.src = "{{ publisher_proxy_url_for('example', chapter='04', name='subdomain-proxy', file='proxy.html') }}";
 
-            if (iframe.addEventListener) {
-                iframe.addEventListener('load', onready, false);
-            } else {
-                iframe.attachEvent('onload', function() {
-                    if (/complete|loaded/.test(iframe.readyState))
-                        onready();
-                });
+        function onready() {
+          iframe.contentWindow.jQuery.ajax({
+            method: 'GET',
+            url: 'products.json',
+            data: { product: id },
+            success: function(resp) {
+              document.getElementById('output').innerHTML = resp;
             }
-
-            document.getElementsByTagName('head')[0].appendChild(iframe);
+          });
         }
 
-        getProductData(1337);
+        if (iframe.addEventListener) {
+          iframe.addEventListener('load', onready, false);
+        } else {
+          iframe.attachEvent('onload', function() {
+            if (/complete|loaded/.test(iframe.readyState)) {
+              onready();
+            }
+          });
+        }
+
+        document.getElementsByTagName('head')[0].appendChild(iframe);
+      }
+
+      getProductData(1337);
     </script>
 
 {% endblock %}
