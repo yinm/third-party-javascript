@@ -8,30 +8,31 @@
     <p>This example communicates with an iframe hosted on a remote domain using the <code>window.postMessage</code> HTML5 API.
 
     <script>
-        function log(msg) {
-            var el = document.getElementById('log');
-            el.style.display = 'block';
-            el.innerHTML += msg + "\n";
-        }
-  
-        function start() {
-            log('Creating iframe');
+      function log(msg) {
+        var el = document.getelementById('log');
+        el.style.display = 'block';
+        el.innerHTML += msg + "\n";
+      }
 
-            var el = document.createElement('iframe');
-            var bd = document.getElementsByTagName('body')[0];
+      function start() {
+        log('Creating iframe');
 
-            el.style.display = 'none';
-            el.src = "{{ service_url_for('example', chapter='05', name='postmessage', file='server.html') }}";
+        var el = document.createElement('iframe');
+        var bd = document.getElementsByTagName('body')[0];
 
-            bd.appendChild(el);
+        el.style.display = 'none';
+        el.src = "{{ service_url_for('example', chapter='05', name='postmessage', file='service.html') }}";
 
-            window.addEventListener('message', function (ev) {
-                if (ev.origin != '{{ service_url }}')
-                    return;
+        bd.appendChild(el);
 
-                log("Incoming: " + ev.data);
-            });
-        }
+        window.addEventListener('message', function(ev) {
+          if (ev.origin != '{{ service_url }}') {
+            return;
+          }
+
+          log("Incomming: " + ev.data);
+        });
+      }
     </script>
     
     <div>
