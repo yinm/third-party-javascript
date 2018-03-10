@@ -79,12 +79,8 @@ def api(endpoint=None):
         return make_response('Unauthorized domain: %s' % domain, 403)
 
 
-@app.route('/login',  methods=['POST'])
+@app.route('/login', methods=['POST'])
 def login():
-    """
-    Sets a cookie
-    """
-    # return flask.redirect('/examples/06/auth-new-window/success.html')
     r = make_response(flask.redirect('/examples/06/auth-new-window/success.html'))
     r.set_cookie('session_id', 'abcdef123456')
     return r
