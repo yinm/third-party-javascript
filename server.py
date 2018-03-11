@@ -54,17 +54,19 @@ def cors():
 # API
 #========================================
 
+# check
 def trusted_domains(domain):
     return ['publisher.test']
 
 
+# check
 def api_request(request, endpoint):
     return make_response(json.dumps({'name': 'Mikon 9000'}))
 
 from urlparse import urlparse
 import json
 
-
+# check
 @app.route('/api/<endpoint>')
 def api(endpoint=None):
     domain = urlparse(request.headers['Referer']).hostname
